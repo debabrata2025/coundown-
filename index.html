@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>coundown</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="main">
+        <div class="inputdiv">
+            <input type="date" class="inputD">
+            <input type="time" class="inputT">
+        </div>
+        <div class="btn" onclick="checkval()">
+            <button>coundown</button>
+        </div>
+        <div class="coundowndiv">
+            <span class="day">00</span>
+            <span class="hour">00</span>
+            <span class="minute">00</span>
+            <span class="seconds">00</span>
+        </div>
+        <div class="clearint">
+            <button onclick="cval()">clear</button>
+        </div>
+    </div>
+
+<script>
+
+
+    let day,hour,minute,sec,alarm;
+    let D = document.querySelector('.day');
+    let Hr = document.querySelector('.hour');
+    let Mn = document.querySelector('.minute');
+    let Sc = document.querySelector('.seconds');
+
+    
+
+ const checkval = () => {
+
+    let inputDate = document.querySelector('.inputD').value;
+    let inputTime = document.querySelector('.inputT').value;
+    
+    let indays = inputDate[8] + inputDate[9];
+    let inmonth = Number(inputDate[5] + inputDate[6]);
+    let inyear = inputDate[0] + inputDate[1] + inputDate[2] + inputDate[2];
+
+    let inhr = inputTime[0] + inputTime[1];
+    let inmn = inputTime[3] + inputTime[4];
+    let alarm = new Audio('./audio/alarm.mp3');
+
+
+    const coundown = () => {
+
+        
+
+        let finalDate = new Date(`${inmonth} ${indays}, ${inyear} ${inhr}:${inmn}:00`).getTime();
+        let now = new Date().getTime();
+        
+        let diff = finalDate - now;
+        
+        day = Math.floor(diff / (24*3600*1000));
+        hour = Math.floor(diff % (24*3600*1000) / (3600*1000));
+        minute = Math.floor(diff %  (3600*1000) / (60*1000));
+        sec = Math.floor(diff % (60*1000) / 1000);
+
+        D.innerHTML = `${day}days`;
+        Hr.innerHTML = `${hour}hrs`;
+        Mn.innerHTML = `${minute}mins`;
+        Sc.innerHTML = `${sec}s`;
+    
+    if(day < 10){
+         D.innerHTML = `0${day}days`;
+        }if (day == 0 || day < 0){
+            D.innerHTML = `00 days`;
+        }if(hour < 10){
+         Hr.innerHTML = `0${hour}hrs`;
+        }if (hour == 0 || hour < 0){
+            Hr.innerHTML = `00hrs`;
+        }if(minute < 10){
+         Mn.innerHTML = `0${minute}mins`;
+        }
+        if (minute == 0 || minute < 0){
+            Mn.innerHTML = `00mins`;
+        }if(sec < 10){
+         Sc.innerHTML = `0${sec}s`;
+        }if (sec == 0 || sec < 0){
+            Sc.innerHTML = `00s`;
+        }    
+
+        if(day == 0 &&hour == 0 && minute == 0 && sec == 0)
+        {
+            alarm.play();
+            alarm.loop = true;
+        }
+
+
+    
+}
+
+const setval = setInterval(coundown, 1000);
+
+ 
+}
+
+const cval = () => {
+    clearInterval(setval);
+    console.log('sss');
+}
+
+
+
+
+
+
+
+   
+
+    
+    
+    
+       
+
+    
+
+
+</script>
+</body>
+</html>

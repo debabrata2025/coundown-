@@ -1,0 +1,103 @@
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html
+{
+    font-size: 62.5%;
+}
+.main
+{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background:  linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.5)),
+                  url('./images/clock.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.main .inputdiv
+{
+    width: 30%;
+    display: flex;
+}
+.main .inputdiv input
+{
+    width: 50%;
+    padding: 1.5rem;
+    border: none;
+    margin-bottom: 2rem;
+    background: rgba(255, 255, 255, 0.4);
+    outline: none;
+    font-size: 2rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+.main .inputdiv input[type="time"]
+{
+    width: 49%;
+    margin-left: 0.5rem;
+}
+.main .inputdiv input:hover,
+.main .inputdiv input:active,
+.main .inputdiv input:focus
+{
+   box-shadow: inset 0 0 0.6rem 0 rgba(234, 19, 19);
+}
+.main .btn
+{
+    margin-bottom: 2rem;
+}
+.main .clearint
+{
+    margin-top: 2rem;
+}
+.main .btn button,
+.main .clearint button
+{
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    background: #00bcd4;
+    border: none;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-transform: capitalize;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+.main .btn button:hover
+{
+    box-shadow: inset 0 0 0rem 3px rgb(50 26 26 / 38%);
+}
+.main .coundowndiv
+{
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main .coundowndiv span
+{
+    font-size: 6rem;
+    font-family: 'Fira Sans', sans-serif;
+    letter-spacing: 0.1rem;
+    word-spacing: 0.2rem;
+    background: rgba(255, 255, 255, 0.2);
+    margin-left: 1.5rem;
+    box-shadow: 0 0 0.6rem ;
+    padding: 1rem;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+}
+.main .coundowndiv span:hover
+{
+    background: rgba(0, 0, 0, 0.2);
+}
